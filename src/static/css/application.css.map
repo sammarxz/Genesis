@@ -1,1 +1,1 @@
-{"version":3,"file":"application.css","sources":["application.scss"],"sourcesContent":["body {\r\n    background: yellow;\r\n}"],"names":[],"mappings":"AAAA,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,MAAM,GACrB"}
+{"version":3,"sources":["application.scss"],"names":[],"mappings":"AAAA;EACI,kBAAiB,EACpB","file":"application.css","sourcesContent":["body {\r\n    background: white;\r\n}"]}
