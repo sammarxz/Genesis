@@ -1,6 +1,6 @@
 'use strict';
 
-const gulp          = require('gulp'),
+var gulp          = require('gulp'),
       sass          = require('gulp-sass'),
       nunjucks      = require('gulp-nunjucks'),
       htmlmin       = require('gulp-htmlmin'),
@@ -12,23 +12,23 @@ const gulp          = require('gulp'),
       rename        = require('gulp-rename'),
       browserSync   = require('browser-sync').create();
 
-gulp.task('concatScripts', () =>
-    gulp.src('src/js/*.js')
+gulp.task('concatScripts', function() {
+    return gulp.src('src/js/*.js')
         .pipe(maps.init())
         .pipe(concat('app.js'))
         .pipe(maps.write('./'))
         .pipe(gulp.dest('src/static/js/'))
-);
+});
 
-gulp.task('minifyScripts', () =>
-    gulp.src('src/static/js/app.js')
+gulp.task('minifyScripts', function() {
+    return gulp.src('src/static/js/app.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('src/static/js/'))
-);
+});
 
-gulp.task('compileSass', () =>
-    gulp.src('src/scss/application.scss')
+gulp.task('compileSass', function() {
+   return  gulp.src('src/scss/application.scss')
         .pipe(maps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -37,26 +37,26 @@ gulp.task('compileSass', () =>
         }))
         .pipe(maps.write('./'))
         .pipe(gulp.dest('src/static/css'))
-);
+});
 
-gulp.task('minifyStylesheet', () =>
-    gulp.src('src/static/css/application.css')
+gulp.task('minifyStylesheet', function() {
+    return gulp.src('src/static/css/application.css')
         .pipe(cssmin())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('src/static/css/'))
-);
+});
 
-gulp.task('compileNunjucks', () =>
-    gulp.src('src/templates/index.html')
+gulp.task('compileNunjucks', function() {
+    return gulp.src('src/templates/index.html')
         .pipe(nunjucks.compile())
         .pipe(gulp.dest('src/'))
-);
+});
 
-gulp.task('minifyHtml', () =>
-    gulp.src('src/*.html')
+gulp.task('minifyHtml', function() {
+    return gulp.src('src/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist'))
-);
+});
 
 gulp.task('watch', function() {
     gulp.watch("src/scss/**/*.scss", ['compileSass']);
