@@ -17,7 +17,7 @@ gulp.task("concatScripts", function() {
         .pipe(maps.init())
         .pipe(concat("app.js"))
         .pipe(maps.write("./"))
-        .pipe(gulp.dest("src/static/js/"))
+        .pipe(gulp.dest("static/js/"))
         .pipe(browserSync.stream());
 });
 
@@ -27,7 +27,7 @@ gulp.task("minifyScripts", function() {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(gulp.dest("src/static/js/"));
+        .pipe(gulp.dest("static/js/"));
 });
 
 gulp.task("compileSass", function() {
@@ -39,7 +39,7 @@ gulp.task("compileSass", function() {
             cascade: false
         }))
         .pipe(maps.write("./"))
-        .pipe(gulp.dest("src/static/css"))
+        .pipe(gulp.dest("static/css"))
         .pipe(browserSync.stream());
 });
 
@@ -49,42 +49,41 @@ gulp.task("minifyStylesheet", function() {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(gulp.dest("src/static/css/"));
+        .pipe(gulp.dest("static/css/"));
 });
 
 gulp.task("compileNunjucks", function() {
     return gulp.src("src/templates/index.html")
         .pipe(nunjucks.compile())
-        .pipe(gulp.dest("src/"));
+        .pipe(gulp.dest(""));
 });
 
 gulp.task("minifyHtml", function() {
-    return gulp.src("src/*.html")
+    return gulp.src("*.html")
         .pipe(htmlmin({
             collapseWhitespace: true
         }))
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("server", function() {
+gulp.task("server", ["compileSass", "concatScripts", "compileNunjucks"], function() {
     browserSync.init({
         server: {
-            baseDir: "src"
+            baseDir: ""
         }
     });
 
     gulp.watch("src/scss/**/*.scss", ["compileSass"]);
     gulp.watch("src/js/*.js", ["concatScripts"]);
     gulp.watch("src/templates/**/*.html", ["compileNunjucks"]);
-
-    gulp.watch("src/*.html").on("change", browserSync.reload);
+    gulp.watch("*.html").on("change", browserSync.reload);
 });
 
 gulp.task("build", ["minifyScripts", "minifyStylesheet", "minifyHtml"], function() {
-    return gulp.src(["src/static/css/application.min.css", "src/static/js/app.min.js",
-            "src/static/img/**"
+    return gulp.src(["static/css/application.min.css", "static/js/app.min.js",
+            "static/img/**"
         ], {
             base: "src"
         })
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest(""));
 });

@@ -1,1 +1,1 @@
-console.log("Tá funfando");
+console.log("Works");
