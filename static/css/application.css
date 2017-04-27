@@ -1,5 +1,163 @@
+/*!
+Title: Portfolio
+Author: Sam Marxz
+Author URI: http://marxz.me/
+Description: Personal Portfolio
+Version: 0.1.0
+*/
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat:500");
+/* =============================================================================
+  RESET
+============================================================================= */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+em,
+img,
+small,
+strong,
+ol,
+ul,
+li,
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block; }
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+/* =============================================================================
+  BUTTON RESETS
+============================================================================= */
+button {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer; }
+
+/* =============================================================================
+  BOX SIZING AND CLEARFIX
+============================================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+/* =============================================================================
+  HTML & BODY
+============================================================================= */
 body {
-  background: white;
-  color: black; }
+  color: #727272;
+  background-color: #FFF;
+  font-family: "Garamond", serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6; }
+
+body.mm-menu-open {
+  overflow: hidden; }
+
+/* =============================================================================
+  HEADINGS
+============================================================================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 22px;
+  color: #212121;
+  line-height: 1.2; }
+
+h1 {
+  font-size: 36px; }
+
+h2 {
+  font-size: 22px; }
+
+/* =============================================================================
+  TEXT
+============================================================================= */
+p {
+  margin-bottom: 22px; }
+
+p:last-child {
+  margin-bottom: 0; }
+
+a {
+  color: #FF2A63;
+  text-decoration: none; }
+  a:hover {
+    color: #c30034; }
+
+/* =============================================================================
+  HEADER
+============================================================================= */
+.header {
+  padding: 5em 0; }
+
+/* =============================================================================
+  CONTAINER
+============================================================================= */
+.container {
+  max-width: 90%;
+  margin: 0 auto; }
+  @media (min-width: 48rem) {
+    .container {
+      max-width: 80%; } }
+  @media (min-width: 72rem) {
+    .container {
+      max-width: 60%; } }
 
 /*# sourceMappingURL=application.css.map */

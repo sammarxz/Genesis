@@ -1,0 +1,45 @@
+// =============================================================================
+//  RATIOS
+// =============================================================================
+
+// =============================================================================
+//  COLOURS
+// =============================================================================
+
+$color--primary: #FF2A63;
+$color--primary-dark: darken($color--primary, 20%);
+$color--primary-light: lighten($color--primary, 20%);
+
+$color--text-primary: #212121; // also for icons
+$color--text-secondary: #727272;
+
+
+// =============================================================================
+//  FONTS
+// =============================================================================
+
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Montserrat:500');
+
+$font-family--primary: "Garamond", serif;
+$font-family--secondary: "Montserrat", sans-serif;
+
+$font-size--small: 16px;
+$font-size--medium: 22px;
+$font-size--large: 36px;
+
+$line-height--medium: 1.6;
+$line-height--small: 1.2;
+
+
+// =============================================================================
+//  BREAKPOINTS
+// =============================================================================
+
+$breakpoints: (
+  xs: 32rem,
+  sm: 48rem,
+  md: 72rem,
+  lg: 96rem,
+  xl: 102rem,
+  xx: 120rem
+);
