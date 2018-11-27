@@ -17,7 +17,7 @@ gulp.task("concatScripts", function() {
         .pipe(maps.init())
         .pipe(concat("app.js"))
         .pipe(maps.write("./"))
-        .pipe(gulp.dest("static/js/"))
+        .pipe(gulp.dest("app/static/js/"))
         .pipe(browserSync.stream());
 });
 
@@ -27,7 +27,7 @@ gulp.task("minifyScripts", function() {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(gulp.dest("static/js/"));
+        .pipe(gulp.dest("app/static/js/"));
 });
 
 gulp.task("compileSass", function() {
@@ -39,7 +39,7 @@ gulp.task("compileSass", function() {
             cascade: false
         }))
         .pipe(maps.write("./"))
-        .pipe(gulp.dest("static/css"))
+        .pipe(gulp.dest("app/static/css"))
         .pipe(browserSync.stream());
 });
 
@@ -49,13 +49,13 @@ gulp.task("minifyStylesheet", function() {
         .pipe(rename({
             suffix: ".min"
         }))
-        .pipe(gulp.dest("static/css/"));
+        .pipe(gulp.dest("app/static/css/"));
 });
 
 gulp.task("compileNunjucks", function() {
     return gulp.src("src/templates/index.html")
         .pipe(nunjucks.compile())
-        .pipe(gulp.dest(""));
+        .pipe(gulp.dest("app"));
 });
 
 gulp.task("minifyHtml", function() {
@@ -69,7 +69,7 @@ gulp.task("minifyHtml", function() {
 gulp.task("server", ["compileSass", "concatScripts", "compileNunjucks"], function() {
     browserSync.init({
         server: {
-            baseDir: ""
+            baseDir: "app"
         }
     });
 
